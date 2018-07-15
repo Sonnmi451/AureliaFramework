@@ -1,0 +1,27 @@
+<template>
+  <require from="./resources/elements/pagination"></require>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <search first-name.two-way="FirstName">
+  </search>
+  </br>
+  </br>
+  <div class="contact-list">
+    <ul class="list-group">
+      <li repeat.for="contact of contacts" class="list-group-item ${contact.id === selectedId ? 'active' : ''}">
+        <a route-href="route: contacts; params.bind: {id:contact.id}" click.delegate="Select(contact.id)">
+          <h4>${contact.firstName} ${contact.lastName}</h4>
+          <p>${contact.email}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+  </br>
+  <pagination page.two-way="page" page-size.two-way="pageSize" total-count.two-way="totalCount" page-count.two-way="pageCount">
+
+  </pagination>
+  <button class="btn btn-primary">
+    <a route-href="contact-new" style="color:white">Add new contact</a>
+  </button>
+</template>

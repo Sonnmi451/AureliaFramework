@@ -1,0 +1,34 @@
+<template>
+  <h3>Page : ${page} </h3>
+  <h3>Page Size: ${pageSize}</h3>
+  <h3>Page Count: ${pageCount}</h3>
+  <h3>Total Count : ${totalCount}</h3>
+  <div class="container">
+    <ul class="pagination">
+      <li class="page-item">
+        <a href="#" click.delegate="GoFirst()">
+          << </a>
+      </li>
+      <li class="page-item">
+        <a href="#" click.delegate="GoPrev()"> prev </a>
+      </li>
+      <li click.delegate="OpenPage(n+1)" repeat.for="n of pageCount" value.bind="n">
+        <a class="page-link"> ${n+1} </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" click.delegate="GoNext()">next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" click.delegate="GoLast()"> >> </a>
+      </li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <select click.delegate="Preview(changeValue)" value.bind="changeValue" id="number-select" class="btn btn-primary pull-right dropdown-toggle"
+      type="button" value="Preview" data-toggle="dropdown">
+      <option selected disabled>Preview</option>
+      <option repeat.for="num of numbers" model.bind="num"> ${num} </option>
+    </select>
+  </div>
+</template>
+
